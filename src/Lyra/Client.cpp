@@ -96,10 +96,10 @@ void Client::initialize(){
         "reset_config"
     };
 
-    for (std::string fname : AssetFiles) {
-        DownloadFile(fname, true);
-    }
-    DownloadFile("mojangles.ttf", false);
+    // for (std::string fname : AssetFiles) {
+    //     DownloadFile(fname, true);
+    // }
+    // DownloadFile("mojangles.ttf", false);
     Settings::load();
     std::vector<std::thread> threads;
 

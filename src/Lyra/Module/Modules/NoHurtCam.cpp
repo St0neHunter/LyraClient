@@ -3,8 +3,8 @@
 
 NoHurtCam::NoHurtCam() : ModuleCtor(67, "No Hurt Cam", "nohurtcam") {
 	this->InitModuleSettings();
-    originalCameraAngle.resize(3);
-    memcpy(originalCameraAngle.data(), (LPVOID) sigOffset, 3);
+    originalCameraAngle.resize(5);
+    memcpy(originalCameraAngle.data(), (LPVOID) sigOffset, 5);
 
 }
 
@@ -22,15 +22,16 @@ void NoHurtCam::onEnable() {
 	Settings::getSettingByName<bool>("No Hurt Cam", "enabled")->value = true;
     eventMgr.addListener(this);
 
-    originalCameraAngle.resize(3);
-    memcpy(originalCameraAngle.data(), (LPVOID) sigOffset, 3);
+    originalCameraAngle.resize(1);
+    memcpy(originalCameraAngle.data(), (LPVOID) sigOffset, 1);
 
-    Memory::patchBytes((LPVOID) sigOffset, newCameraAngle, 3);
+	std::byte jump{0xEB};
+    Memory::patchBytes((LPVOID) sigOffset, &jump, 1);
 }
 
 void NoHurtCam::onDisable() {
 	Settings::getSettingByName<bool>("No Hurt Cam", "enabled")->value = false;
 	eventMgr.removeListener(this);
     
-    Memory::patchBytes((LPVOID) sigOffset, originalCameraAngle.data(), 3);
+    Memory::patchBytes((LPVOID) sigOffset, originalCameraAngle.data(), 1);
 }

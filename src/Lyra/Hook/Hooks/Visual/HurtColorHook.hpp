@@ -30,7 +30,7 @@ public:
 
     void enableHook() override {
 
-        auto RefAddr = Memory::findSig("E8 ? ? ? ? E9 ? ? ? ? 8B 43 ? 48 8D 54 24");
+        auto RefAddr = Memory::findSig("E8 ? ? ? ? 0F 28 05 ? ? ? ? 0F 11 85 68 02 00 00");
         auto RealFunc = Memory::offsetFromSig(RefAddr, 1);
 
 

@@ -12,11 +12,11 @@ FreeLook::FreeLook() : ModuleCtor(67, "Freelook", "freelook") {
     OriginalYaw2.resize(4);
     memcpy(OriginalYaw2.data(), (LPVOID)yaw2, 4);
 
-    OriginalPitch.resize(4);
-    memcpy(OriginalPitch.data(), (LPVOID)pitch, 4);
-
-    Originalmovement.resize(4);
-    memcpy(Originalmovement.data(), (LPVOID)movement, 4);
+    // OriginalPitch.resize(4);
+    // memcpy(OriginalPitch.data(), (LPVOID)pitch, 4);
+    //
+    // Originalmovement.resize(4);
+    // memcpy(Originalmovement.data(), (LPVOID)movement, 4);
 
     PatchedYaw1.push_back(0x90);
     PatchedYaw1.push_back(0x90);
@@ -28,15 +28,15 @@ FreeLook::FreeLook() : ModuleCtor(67, "Freelook", "freelook") {
     PatchedYaw2.push_back(0x90);
     PatchedYaw2.push_back(0x90);
 
-    PatchedPitch.push_back(0x90);
-    PatchedPitch.push_back(0x90);
-    PatchedPitch.push_back(0x90);
-    PatchedPitch.push_back(0x90);
-
-    Patchedmovement.push_back(0x90);
-    Patchedmovement.push_back(0x90);
-    Patchedmovement.push_back(0x90);
-    Patchedmovement.push_back(0x90);
+    // PatchedPitch.push_back(0x90);
+    // PatchedPitch.push_back(0x90);
+    // PatchedPitch.push_back(0x90);
+    // PatchedPitch.push_back(0x90);
+    //
+    // Patchedmovement.push_back(0x90);
+    // Patchedmovement.push_back(0x90);
+    // Patchedmovement.push_back(0x90);
+    // Patchedmovement.push_back(0x90);
 }
 
 
@@ -82,9 +82,9 @@ void FreeLook::patch() const {
 
     Memory::patchBytes((LPVOID)yaw2, PatchedYaw2.data(), PatchedYaw2.size());
 
-    Memory::patchBytes((LPVOID)pitch, PatchedPitch.data(), PatchedPitch.size());
-
-    Memory::patchBytes((LPVOID)movement, Patchedmovement.data(), Patchedmovement.size());
+    // Memory::patchBytes((LPVOID)pitch, PatchedPitch.data(), PatchedPitch.size());
+    //
+    // Memory::patchBytes((LPVOID)movement, Patchedmovement.data(), Patchedmovement.size());
 }
 
 void FreeLook::unpatch() const {
@@ -92,7 +92,7 @@ void FreeLook::unpatch() const {
 
     Memory::patchBytes((LPVOID)yaw2, OriginalYaw2.data(), OriginalYaw2.size());
 
-    Memory::patchBytes((LPVOID)pitch, OriginalPitch.data(), OriginalPitch.size());
-
-    Memory::patchBytes((LPVOID)movement, Originalmovement.data(), Originalmovement.size());
+    // Memory::patchBytes((LPVOID)pitch, OriginalPitch.data(), OriginalPitch.size());
+    //
+    // Memory::patchBytes((LPVOID)movement, Originalmovement.data(), Originalmovement.size());
 }

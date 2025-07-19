@@ -11,10 +11,10 @@ std::string BlockOutline::getModuleName() {
 }
 
 void BlockOutline::InitModuleSettings() {
-    highlightColorRipRelAddr = Memory::findSig("? ? ? ? 0F 11 45 ? 0F 11 00 C6 40 10 ? 45 38 96"); // blockHighlightColor RIP REL 4BYTE FROM FUNC OFFSET ADDR
+    highlightColorRipRelAddr = Memory::findSig("? ? ? ? 0F 11 85 00 03 00 00 0F 11 00"); // blockHighlightColor RIP REL 4BYTE FROM FUNC OFFSET ADDR
     highlightColorOrigRipRel = *(UINT32*)highlightColorRipRelAddr;
 
-    outlineColorRipRelAddr = Memory::findSig("? ? ? ? 0F 11 00 C6 40 10 ? 0F 57 C9 0F 11 4D"); // mce::Color::BLACK
+    outlineColorRipRelAddr = Memory::findSig("? ? ? ? 0F 11 00 C6 40 10 ? 0F 57 C9"); // mce::Color::BLACK
     outlineColorOrigRipRel = *(UINT32*)outlineColorRipRelAddr;
 
     selectionColor = (MCCColor*)AllocateBuffer((void*)highlightColorRipRelAddr); // allocate space for color

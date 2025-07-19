@@ -10,7 +10,7 @@ ActorNormalTickHook::ActorNormalTickHook() : Hook("Actor Normal Tick Hook", "48 
 void ActorNormalTickHook::enableHook()
 {
 
-	auto vft = Memory::findSig("48 8D 05 ? ? ? ? 48 89 01 B8 ? ? ? ? 8D 50 FA 44 8D 48 ? 44 8D 40 ? 66 89 44 ? ? E8 ? ? ? ? 48 8B 8B");
+	auto vft = Memory::findSig("48 8D ? ? ? ? ? 48 89 ? BA ? ? ? ? 44 8D ? ? 44 8D ? ? 66 C7 44 24 20 ? ? E8 ? ? ? ? 48 8B");
 	int xd = *reinterpret_cast<int*>(vft + 3);
 	uintptr_t** vftREAL = reinterpret_cast<uintptr_t**>(vft + xd + 7);
 
