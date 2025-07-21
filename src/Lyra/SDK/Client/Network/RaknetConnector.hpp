@@ -8,6 +8,6 @@
 
 class RaknetConnector {
 public:
-    BUILD_ACCESS(this, std::string, JoinedIp, 0x458);
-    BUILD_ACCESS(this, RakPeer *, peer, 0x298);
+    BUILD_ACCESS(this, std::string, JoinedIp, 0x398);
+    BUILD_ACCESS(this, RakPeer *, peer, 0x2A0);
 };

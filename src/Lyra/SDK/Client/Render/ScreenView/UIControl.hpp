@@ -9,7 +9,7 @@ public:
     char filling[192]; //0x0000
     std::vector<std::unique_ptr<UIComponent>> components; //0xC0
 
-    BUILD_ACCESS(this, std::string, LayerName, 0x18);
+    BUILD_ACCESS(this, std::string, LayerName, 0x20);
     BUILD_ACCESS(this, float, scale, 0x40);
     BUILD_ACCESS(this, float, x, 0x78);
     BUILD_ACCESS(this, float, y, 0x7C);

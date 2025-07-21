@@ -127,15 +127,16 @@ enum ActorFlags {
 
 class Actor {
 public:
-	BUILD_ACCESS(this, int16_t, hurtTime, 0x214);
-    BUILD_ACCESS(this, Level*, level, 0x258);
-	BUILD_ACCESS(this, StateVectorComponent*, stateVector, 0x298);
-    BUILD_ACCESS(this, std::string, playerName, 0x1D18);
+	BUILD_ACCESS(this, int16_t, hurtTime, 0x19C);
+    BUILD_ACCESS(this, Level*, level, 0x1D8);
+	BUILD_ACCESS(this, StateVectorComponent*, stateVector, 0x210);
+    BUILD_ACCESS(this, std::string, playerName, 0xC50);
 
 	template <typename Component>
 	Component* tryGet() {
 		return this->getEntityContext().enttRegistry.try_get<Component>(this->getEntityContext().entity);
 	}
+
 	EntityContext& getEntityContext() {
 		return Memory::direct_access<EntityContext>(this, 0x8);
 	}
@@ -166,11 +167,11 @@ public:
 
 	ItemStack *getOffhandSlot() {
 	    static uintptr_t sig;
-	
+
 	    if (sig == NULL) {
 	        sig = Memory::findSig("48 8B 89 ? ? ? ? BA ? ? ? ? 48 8B 01 48 8B 40 ? 48 FF 25");
 	    }
-	
+
 	    auto fn = reinterpret_cast<ItemStack *(__thiscall *)(Actor *)>(sig);
 	    return fn(this);
 	}
@@ -179,7 +180,7 @@ public:
         static uintptr_t sig;
 
         if (sig == NULL) {
-            sig = Memory::findSig("48 89 5C 24 ? 57 48 83 EC ? 48 8B D9 48 8B FA 48 8B 89 ? ? ? ? 48 85 C9 0F 84");
+            sig = Memory::findSig("48 89 5C 24 18 48 89 74 24 20 57 48 83 EC 60 48 8B F2 48 8B F9 48 8B");
         }
 
         auto fn = reinterpret_cast<void (__thiscall *)(Actor *, std::string *)>(sig);
@@ -190,7 +191,7 @@ public:
         static uintptr_t sig;
 
         if (sig == NULL) {
-            sig = Memory::findSig("48 83 EC ? 48 8B 81 ? ? ? ? 48 85 C0 74 3B 48 8B 08 BA ? ? ? ? 48 8B 40 ? 48 2B C1 48 C1 F8 ? 66 3B D0 73 17");
+            sig = Memory::findSig("48 83 EC 28 48 8B 81 28 01 00 00 48 85 C0 74 4F");
         }
 
         auto fn = reinterpret_cast<std::string *(__thiscall *)(Actor *)>(sig);
@@ -206,6 +207,6 @@ public:
     }
 
     bool isValidTarget() {
-        return Memory::CallVFunc<56, bool>(this);
+        return Memory::CallVFunc<52, bool>(this);
     }
 };

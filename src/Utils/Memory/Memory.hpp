@@ -52,6 +52,11 @@ void set##name(type v) const { direct_access<type>(ptr, offset) = v; }
 class Memory
 {
 public:
+    template <typename TRet, typename... TArgs>
+    static auto CallVFuncI(uint32_t index, void* thisptr, TArgs... argList) -> TRet {
+        using Fn = TRet(__thiscall*)(void*, TArgs...);
+        return (*static_cast<Fn**>(thisptr))[index](thisptr, std::forward<TArgs>(argList)...);
+    }
 
     static void patchBytes(void* dst, void* src, unsigned int size) {
         DWORD oldprotect;

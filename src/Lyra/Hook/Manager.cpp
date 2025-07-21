@@ -48,7 +48,7 @@ void HookManager::initialize() {
     hooks.push_back(new RenderLevel());
     hooks.push_back(new SendPacketHook());
     hooks.push_back(new FontDrawTransformedHook());
-    hooks.push_back(new AddGuiMessage());
+    //hooks.push_back(new AddGuiMessage());
     //hooks.push_back(new RenderHighlightSelectionHook());
 
     for (auto hook : hooks)

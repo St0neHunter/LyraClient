@@ -5,5 +5,5 @@
 
 class Player : public Mob {
 public:
-	BUILD_ACCESS(this, PlayerInventory*, Supplies, 0x788);
+	BUILD_ACCESS(this, PlayerInventory*, Supplies, 0x5C0);
 };

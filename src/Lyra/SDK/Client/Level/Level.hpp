@@ -35,15 +35,15 @@ class Level {
 
 public:
     troll &getPlayerMap() {
-        return direct_access<troll>(this, 0x1C88);
+        return direct_access<troll>(this, 0xB98);
     }
 
     HitResult &getHitResult() {
-        return *hat::member_at<std::shared_ptr<HitResult>>(this, 0xB30);
+        return *hat::member_at<std::shared_ptr<HitResult>>(this, 0x248);
     }
 
     std::vector<Actor *> getRuntimeActorList() {
-        static uintptr_t sig = Memory::findSig("40 53 48 83 EC 30 48 81 C1 C0");
+        static uintptr_t sig = Memory::findSig("48 89 5C 24 18 55 56 57 48 83 EC 40 48 8B FA 48 89 54 24 30");
         static auto getRuntimeActorList = *(decltype(&Level::getRuntimeActorList) *) &sig;
         return (this->*getRuntimeActorList)();
     }

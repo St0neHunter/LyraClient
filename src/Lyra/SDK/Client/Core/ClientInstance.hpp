@@ -9,34 +9,34 @@
 
 class ClientInstance {
 public:
-	BUILD_ACCESS(this, GuiData*, guiData, 0x560);
-	BUILD_ACCESS(this, float*, FovX, 0x6A0);
-	BUILD_ACCESS(this, MCGame*, mcgame, 0xC8);
-	BUILD_ACCESS(this, float*, FovY, 0x6B4);
+	BUILD_ACCESS(this, GuiData*, guiData, 0x5B0);
+	BUILD_ACCESS(this, float*, FovX, 0x748);
+	BUILD_ACCESS(this, MCGame*, mcgame, 0xD0);
+	BUILD_ACCESS(this, float*, FovY, 0x75C);
 
 	void grabMouse() {
-		Memory::CallVFunc<331, void>(this);
+		Memory::CallVFunc<343, void>(this);
 	}
 
 	void releaseMouse() {
-		Memory::CallVFunc<332, void>(this);
+		Memory::CallVFunc<344, void>(this);
 	}
 
 	BlockSource* getBlockSource() {
-		return Memory::CallVFunc<28, BlockSource*>(this);
+		return Memory::CallVFunc<29, BlockSource*>(this);
 	}
 
 	LocalPlayer* getLocalPlayer() {
-		return Memory::CallVFunc<29, LocalPlayer*>(this);
+		return Memory::CallVFunc<30, LocalPlayer*>(this);
 	}
 
 
 	LevelRender* getLevelRenderer() {
-		return Memory::direct_access<LevelRender*>(this, 0xE0);
+		return Memory::direct_access<LevelRender*>(this, 0xE8);
 	}
 
     LoopbackPacketSender *getPacketSender() {
-        return *reinterpret_cast<LoopbackPacketSender **>((uintptr_t) this + 0xF0);
+        return *reinterpret_cast<LoopbackPacketSender **>((uintptr_t) this + 0xF8);
     }
 
     RaknetConnector *getRakNetConnector() {

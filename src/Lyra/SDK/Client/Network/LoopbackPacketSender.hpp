@@ -15,10 +15,10 @@ public:
 
 class NetworkSystem {
 public:
-    BUILD_ACCESS(this, class RemoteConnectorComposite*, remoteConnectorComposite, 0x80);
+    BUILD_ACCESS(this, class RemoteConnectorComposite*, remoteConnectorComposite, 0x90);
 };
 
 class RemoteConnectorComposite {
 public:
-    BUILD_ACCESS(this, RaknetConnector*, rakNetConnector, 0x60);
+    BUILD_ACCESS(this, RaknetConnector*, rakNetConnector, 0x70);
 };

@@ -19,6 +19,6 @@ short ItemStack::getDamageValue() {
 
 short ItemStack::getMaxDamage() {
     using getMaxDamageFunc = short(__fastcall*)(ItemStack*);
-    static auto getMaxDamage = reinterpret_cast<getMaxDamageFunc>(Memory::findSig("48 8B 41 08 48 85 C0 74 19"));
+    static auto getMaxDamage = reinterpret_cast<getMaxDamageFunc>(Memory::findSig("48 83 EC 28 48 8B 41 08 33 D2 48 85 C0 74 08 48 39 10 0F 94 C1 EB 05 B9 01 00 00 00 84 C9 75 20"));
     return getMaxDamage(this);
 }

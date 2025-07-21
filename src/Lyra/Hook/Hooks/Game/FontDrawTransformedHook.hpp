@@ -20,7 +20,7 @@ public:
     static inline FontDrawTransformedOriginal funcOriginal = nullptr;
 
     FontDrawTransformedHook() : Hook("Font drawTransformed Hook",
-                                     "48 8B C4 48 89 58 ? 48 89 68 ? 48 89 70 ? 48 89 78 ? 41 54 41 56 41 57 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78") {}
+                                     "48 8B C4 48 89 58 08 48 89 70 10 48 89 78 18 55 41 54 41 55 41 56 41 57 48 8D A8 48 FF") {}
 
     void enableHook() override {
 
