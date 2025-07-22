@@ -106,19 +106,19 @@ void MenuSelector::onRender(const RenderEvent &event) {
             RenderUtils::fillRect(ModsPos, ModsSize, Utils::IsMouseOverRectangle(Utils::mousepos, ModsPos, ModsSize) ? accent : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(ModsSizeX, bSize),.5));
             RenderUtils::RenderTextWithOutline(ModsPos, ModsSize, IM_COL32_WHITE, "MOD MENU", ModsSize.y / 100, IM_COL32_WHITE, .5, 2);
         }
-        if(FriendsSizeY > 0){
-            RenderUtils::fillRect(FriendsPos, FriendsSize, Utils::IsMouseOverRectangle(Utils::mousepos, FriendsPos, FriendsSize) ? accent : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, FriendsSizeY), .5));
-            RenderUtils::RenderImage(ImVec2(FriendsPos.x, FriendsPos.y), ImVec2(FriendsSize.x, FriendsSize.y), "Lyra\\Assets\\friends_menu.png", IM_COL32_WHITE);
-        }
+        // if(FriendsSizeY > 0){
+        //     RenderUtils::fillRect(FriendsPos, FriendsSize, Utils::IsMouseOverRectangle(Utils::mousepos, FriendsPos, FriendsSize) ? accent : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, FriendsSizeY), .5));
+        //     RenderUtils::RenderImage(ImVec2(FriendsPos.x, FriendsPos.y), ImVec2(FriendsSize.x, FriendsSize.y), "Lyra\\Assets\\friends_menu.png", IM_COL32_WHITE);
+        // }
         if(ProfilesSizeY > 0){
             RenderUtils::fillRect(ProfilesPos, ProfilesSize, Utils::IsMouseOverRectangle(Utils::mousepos, ProfilesPos, ProfilesSize) ? accent : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, ProfilesSizeY), .5));
             RenderUtils::RenderImage(ImVec2(ProfilesPos.x, ProfilesPos.y), ImVec2(ProfilesSize.x, ProfilesSize.y), "Lyra\\Assets\\load_profile.png", IM_COL32_WHITE);
         }
-        if(ResetSizeY > 0){
-            //RenderUtils::fillRect(ResetPos, ResetSize, Utils::IsMouseOverRectangle(Utils::mousepos, ResetPos, ResetSize) ? ImColor(200, 50, 50, 255) : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, ResetSizeY), .5));
-            RenderUtils::fillRect(ResetPos, ResetSize, ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, ResetSizeY), .5)); // will change later
-            RenderUtils::RenderImage(ImVec2(ResetPos.x, ResetPos.y), ImVec2(ResetSize.x, ResetSize.y), "Lyra\\Assets\\reset_config.png", ImColor(100, 100, 100, 255)); // will change later
-        }
+        // if(ResetSizeY > 0){
+        //     //RenderUtils::fillRect(ResetPos, ResetSize, Utils::IsMouseOverRectangle(Utils::mousepos, ResetPos, ResetSize) ? ImColor(200, 50, 50, 255) : ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, ResetSizeY), .5));
+        //     RenderUtils::fillRect(ResetPos, ResetSize, ImColor(.0f, .0f, .0f, .75f), Constraints::RoundingCalc(ImVec2(bSize, ResetSizeY), .5)); // will change later
+        //     RenderUtils::RenderImage(ImVec2(ResetPos.x, ResetPos.y), ImVec2(ResetSize.x, ResetSize.y), "Lyra\\Assets\\reset_config.png", ImColor(100, 100, 100, 255)); // will change later
+        // }
         if (ImGui::IsMouseClicked(0)) {
             if(Utils::IsMouseOverRectangle(Utils::mousepos, ModsPos, ModsSize)) {
                 toggle();
@@ -128,13 +128,13 @@ void MenuSelector::onRender(const RenderEvent &event) {
                 LoadUI = true;
                 this->hideUI = true;
             }
-            if (Utils::IsMouseOverRectangle(Utils::mousepos, FriendsPos, FriendsSize)) {
-                toggle();
-                FriendSys.toggle();
-            }
-            if (Utils::IsMouseOverRectangle(Utils::mousepos, ResetPos, ResetSize)) {
-                // Do this thing pls
-            }
+            // if (Utils::IsMouseOverRectangle(Utils::mousepos, FriendsPos, FriendsSize)) {
+            //     toggle();
+            //     FriendSys.toggle();
+            // }
+            // if (Utils::IsMouseOverRectangle(Utils::mousepos, ResetPos, ResetSize)) {
+            //     // Do this thing pls
+            // }
         }
     }
 }
